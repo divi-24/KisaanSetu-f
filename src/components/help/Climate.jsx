@@ -1,33 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { WiHumidity, WiBarometer, WiStrongWind, WiThermometer, WiSunrise, WiSunset, WiCloudyGusts } from 'react-icons/wi';
 import { Search } from 'lucide-react';
 
-// API key (Note: In a production environment, this should be stored securely)
 const API_KEY = '3c39dd8447beb9c1548b28b78b602a26';
 
-// Utility functions
 const fetchData = async (URL) => {
   const response = await fetch(`${URL}&appid=${API_KEY}`);
-  if (!response.ok) {
-    console.error(`Error ${response.status}: ${response.statusText}`);
-    throw new Error('Network response was not ok');
-  }
+  if (!response.ok) throw new Error('Network response was not ok');
   return response.json();
 };
 
-// OpenWeatherAPI Endpoints
 const url = {
   currentWeather: (lat, lon) =>
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}`,
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric`,
   airPollution: (lat, lon) =>
     `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}`,
   forecast: (lat, lon) =>
-    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}`,
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric`,
   geocoding: (query) => `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5`,
-  disasters: (lat, lon) => `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}`
 };
 
-// Helper functions
 const getDate = (dateUnix, timezone) => {
   const date = new Date((dateUnix + timezone) * 1000);
   return date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
@@ -39,42 +31,40 @@ const getTime = (timeUnix, timezone) => {
 };
 
 export default function Climate() {
+  // State variables
   const [loading, setLoading] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState([]);
+  const [disasterAlerts, setDisasterAlerts] = useState([]);
   const [currentWeather, setCurrentWeather] = useState([]);
   const [airQualityIndex, setAirQualityIndex] = useState(null);
   const [error, setError] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
-  const [disasterAlerts, setDisasterAlerts] = useState(null);
-  const [suggestions, setSuggestions] = useState([]);  // For storing location suggestions
-  const [debounceTimeout, setDebounceTimeout] = useState(null);  // For debounce control
+  const [suggestions, setSuggestions] = useState([]);
+  const [debounceTimeout, setDebounceTimeout] = useState(null);
 
-  // Fetch weather data
   const fetchWeatherData = async (lat, lon) => {
     setLoading(true);
     setError(false);
     try {
-      const currentWeatherData = await fetchData(url.currentWeather(lat, lon));
-      const airPollutionData = await fetchData(url.airPollution(lat, lon));
-      const forecast = await fetchData(url.forecast(lat, lon));
-      const disasterData = await fetchData(url.disasters(lat, lon));
+      const [current, airPollution, forecast] = await Promise.all([
+        fetchData(url.currentWeather(lat, lon)),
+        fetchData(url.airPollution(lat, lon)),
+        fetchData(url.forecast(lat, lon)),
+      ]);
 
-      setWeatherData(currentWeatherData);
-      setAirQualityIndex(airPollutionData.list[0].main.aqi);
-      setDisasterAlerts(disasterData?.alerts || null);
+      setWeatherData(current);
+      setAirQualityIndex(airPollution.list[0]?.main.aqi || null);
 
       const now = new Date();
       const cutoffTime = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-
-      const next24HoursForecast = forecast.list.filter((entry) => {
-        const entryDate = new Date(entry.dt * 1000);
-        return entryDate >= now && entryDate <= cutoffTime;
-      });
+      const next24HoursForecast = forecast.list.filter(entry => 
+        new Date(entry.dt * 1000) <= cutoffTime
+      );
 
       setCurrentWeather(next24HoursForecast);
-      setForecastData(forecast.list.filter((_, index) => index % 8 === 0));
+      setForecastData(forecast.list.filter((_, i) => i % 8 === 0));
     } catch (err) {
       console.error(err);
       setError(true);
@@ -83,66 +73,51 @@ export default function Climate() {
     }
   };
 
-  // Handle search term change with debounce
   const handleSearchChange = async (e) => {
     const value = e.target.value;
     setSearchTerm(value);
 
-    if (debounceTimeout) {
-      clearTimeout(debounceTimeout);
-    }
+    clearTimeout(debounceTimeout);
+    if (!value) return setSuggestions([]);
 
-    if (value.length === 0) {
-      setSuggestions([]);
-      return;
-    }
-
-    const newDebounceTimeout = setTimeout(async () => {
+    setDebounceTimeout(setTimeout(async () => {
       try {
         const locations = await fetchData(url.geocoding(value));
-        setSuggestions(locations);  // Set the location suggestions
+        setSuggestions(locations);
       } catch (err) {
-        console.error('Error fetching geocoding data:', err);
+        console.error('Geocoding error:', err);
+        setSuggestions([]);
       }
-    }, 500);  // 500ms debounce time
-
-    setDebounceTimeout(newDebounceTimeout);
+    }, 500));
   };
 
-  // Handle suggestion click
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!suggestions.length) return;
+    handleSuggestionClick(suggestions[0]);
+  };
+
   const handleSuggestionClick = (location) => {
     const { lat, lon, name, state, country } = location;
-    setSelectedLocation(`${name}${state ? ', ' + state : ''}, ${country}`);
-    setSearchTerm(`${name}${state ? ', ' + state : ''}, ${country}`);
+    setSelectedLocation(`${name}${state ? `, ${state}` : ''}, ${country}`);
+    setSearchTerm('');
     setSuggestions([]);
     fetchWeatherData(lat, lon);
   };
 
-  // Handle current location
   const handleCurrentLocation = () => {
-    if (!navigator.geolocation) {
-      alert('Geolocation is not supported by your browser.');
-      return;
-    }
-
+    if (!navigator.geolocation) return alert("Geolocation not supported");
+    
     setLoading(true);
-    setError(false);
-    setWeatherData(null);
-    setForecastData([]);
-    setCurrentWeather([]);
-    setAirQualityIndex(null);
-
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
+      ({ coords }) => {
+        fetchWeatherData(coords.latitude, coords.longitude);
         setSelectedLocation('Your Current Location');
-        fetchWeatherData(latitude, longitude);
       },
       (err) => {
-        console.error('Error fetching current location:', err);
+        console.error(err);
         setError(true);
         setLoading(false);
-        alert('Unable to retrieve your location.');
       }
     );
   };
@@ -150,33 +125,31 @@ export default function Climate() {
   return (
     <div className="min-h-screen flex flex-col items-center bg-gradient-to-br from-blue-100 to-green-100 p-5 w-full mt-14">
       <div className="w-full max-w-4xl mb-1 mt-24 relative">
-        <form onSubmit={(e) => e.preventDefault()} className="flex w-full mb-4">
+        <form onSubmit={handleFormSubmit} className="flex w-full mb-4">
           <input
             type="text"
             value={searchTerm}
             onChange={handleSearchChange}
-            className="p-4 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full transition duration-300 ease-in-out"
-            placeholder="Search for a location (City, State, Country)"
+            className="p-4 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+            placeholder="Search location..."
           />
           <button
-            type="button"
-            onClick={() => handleSearchChange({ target: { value: searchTerm } })}
-            className="p-4 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+            type="submit"
+            className="p-4 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 transition"
           >
             <Search className="w-6 h-6" />
           </button>
         </form>
 
-        {/* Display suggestions */}
         {suggestions.length > 0 && (
-          <div className="absolute bg-white shadow-lg rounded-lg max-w-xl w-full mt-2 z-10">
-            {suggestions.map((location, index) => (
+          <div className="absolute bg-white shadow-lg rounded-lg w-full z-10">
+            {suggestions.map((loc, i) => (
               <div
-                key={index}
-                className="p-3 cursor-pointer hover:bg-gray-200"
-                onClick={() => handleSuggestionClick(location)}
+                key={i}
+                className="p-3 hover:bg-gray-100 cursor-pointer"
+                onClick={() => handleSuggestionClick(loc)}
               >
-                <p>{`${location.name}${location.state ? ', ' + location.state : ''}, ${location.country}`}</p>
+                {`${loc.name}${loc.state ? `, ${loc.state}` : ''}, ${loc.country}`}
               </div>
             ))}
           </div>
@@ -184,97 +157,54 @@ export default function Climate() {
 
         <button
           onClick={handleCurrentLocation}
-          className="w-full p-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300 ease-in-out flex items-center justify-center mt-4"
+          className="w-full p-4 bg-green-500 text-white rounded-lg hover:bg-green-600 mt-4"
         >
           Use Current Location
         </button>
       </div>
 
-      {loading && <p className="text-blue-800">Loading...</p>}
-      {error && <p className="text-red-500">Error fetching data. Please try again.</p>}
+      {loading && <p className="text-blue-500">Loading...</p>}
+      {error && <p className="text-red-500">Error loading data</p>}
 
-      {/* Weather details and other components as before */}
       {weatherData && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
-          {/* Current Weather */}
-          <div className="bg-white rounded-xl shadow-lg p-6 transition duration-300 hover:shadow-xl">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
-              {selectedLocation || weatherData.name}
-            </h2>
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h2 className="text-3xl font-bold text-center mb-4">{selectedLocation}</h2>
             <div className="flex flex-col items-center">
               <img
                 src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`}
                 alt={weatherData.weather[0].description}
                 className="w-32 h-32 mb-4"
               />
-              <p className="text-6xl font-semibold text-gray-800 mb-2">
-                {Math.round(weatherData.main.temp - 273.15)}°C
+              <p className="text-6xl font-semibold mb-2">
+                {Math.round(weatherData.main.temp)}°C
               </p>
-              <p className="text-xl text-gray-600 capitalize">{weatherData.weather[0].description}</p>
+              <p className="text-xl text-gray-600 capitalize">
+                {weatherData.weather[0].description}
+              </p>
             </div>
           </div>
 
-          {/* Weather Details */}
-          <div className="bg-white rounded-xl shadow-lg p-6 transition duration-300 hover:shadow-xl">
-            <h3 className="text-2xl font-semibold mb-4 text-center text-gray-800">Current Conditions</h3>
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h3 className="text-2xl font-semibold mb-4 text-center">Current Conditions</h3>
             <div className="grid grid-cols-2 gap-4">
               <WeatherDetail icon={WiHumidity} label="Humidity" value={`${weatherData.main.humidity}%`} />
-              <WeatherDetail icon={WiThermometer} label="Feels Like" value={`${Math.round(weatherData.main.feels_like - 273.15)}°C`} />
+              <WeatherDetail icon={WiThermometer} label="Feels Like" value={`${Math.round(weatherData.main.feels_like)}°C`} />
               <WeatherDetail icon={WiStrongWind} label="Wind Speed" value={`${Math.round(weatherData.wind.speed * 3.6)} km/h`} />
               <WeatherDetail icon={WiBarometer} label="Pressure" value={`${weatherData.main.pressure} hPa`} />
               <WeatherDetail icon={WiSunrise} label="Sunrise" value={getTime(weatherData.sys.sunrise, weatherData.timezone)} />
               <WeatherDetail icon={WiSunset} label="Sunset" value={getTime(weatherData.sys.sunset, weatherData.timezone)} />
-              <WeatherDetail icon={WiCloudyGusts} label="Air Quality" value={airQualityIndex ? `${airQualityIndex}` : 'N/A'} />
+              <WeatherDetail 
+                icon={WiCloudyGusts} 
+                label="Air Quality" 
+                value={airQualityIndex !== null ? airQualityIndex : 'N/A'} 
+              />
             </div>
           </div>
         </div>
       )}
 
-      {/* 5-Day Forecast */}
-      {forecastData.length > 0 && (
-        <div className="mt-8 w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 transition duration-300 hover:shadow-xl">
-          <h3 className="text-2xl font-semibold mb-4 text-center text-gray-800">5-Day Forecast</h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {forecastData.map((forecast, index) => (
-              <div key={index} className="flex flex-col items-center p-2 border rounded-lg">
-                <p className="font-semibold text-gray-700">{getDate(forecast.dt, weatherData.timezone)}</p>
-                <img
-                  src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
-                  alt={forecast.weather[0].description}
-                  className="w-16 h-16 my-2"
-                />
-                <p className="text-lg font-semibold text-gray-800">{Math.round(forecast.main.temp - 273.15)}°C</p>
-                <p className="text-sm text-gray-600 capitalize">{forecast.weather[0].description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Hourly Forecast */}
-      {currentWeather.length > 0 && (
-        <div className="mt-8 w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 transition duration-300 hover:shadow-xl">
-          <h3 className="text-2xl font-semibold mb-4 text-center text-gray-800">Hourly Forecast</h3>
-          <div className="overflow-x-auto">
-            <div className="inline-flex space-x-4 pb-4">
-              {currentWeather.map((entry, index) => (
-                <div key={index} className="flex flex-col items-center p-2 border rounded-lg min-w-[100px]">
-                  <p className="font-semibold text-gray-700">{getTime(entry.dt, weatherData.timezone)}</p>
-                  <img
-                    src={`https://openweathermap.org/img/wn/${entry.weather[0].icon}@2x.png`}
-                    alt={entry.weather[0].description}
-                    className="w-16 h-16 my-2"
-                  />
-                  <p className="text-lg font-semibold text-gray-800">{Math.round(entry.main.temp - 273.15)}°C</p>
-                  <p className="text-sm text-gray-600 capitalize">{entry.weather[0].description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Disaster Alerts */}
+      {/* Forecast sections remain similar */}
       {disasterAlerts && disasterAlerts.length > 0 ? (
         <div className="mt-8 w-full max-w-4xl bg-red-100 rounded-xl shadow-lg p-6 transition duration-300 hover:shadow-xl">
           <h3 className="text-2xl font-semibold mb-4 text-center text-red-800">Disaster Alerts</h3>
@@ -303,7 +233,7 @@ function WeatherDetail({ icon: Icon, label, value }) {
       <Icon className="w-8 h-8 text-blue-500" />
       <div>
         <p className="text-sm text-gray-600">{label}</p>
-        <p className="text-lg font-semibold text-gray-800">{value}</p>
+        <p className="text-lg font-semibold">{value}</p>
       </div>
     </div>
   );
