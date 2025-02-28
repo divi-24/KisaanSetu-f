@@ -7,7 +7,7 @@ const WishlistComponent = ({ userId }) => {
   const [error, setError] = useState('');
 
   const ApiUrl = process.env.NODE_ENV === 'production'
-    ? 'https://KisaanSetu-ai-11j3.onrender.com'
+    ? 'https://agrotech-ai-11j3.onrender.com'
     : 'http://localhost:8080';
 
   useEffect(() => {

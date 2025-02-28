@@ -15,10 +15,10 @@ const categories = ['All', 'Farming Technology', 'Farming Equipment', 'Agricultu
 
 
 const ProductCard = ({ product, userId }) => {
-  const navigate = useNavigate();
+  const navigate = usee();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const ApiUrl = process.env.NODE_ENV === 'production'
-  ? 'https://KisaanSetu-ai-11j3.onrender.com'
+  ? 'https://agrotech-ai-11j3.onrender.com'
   : 'http://localhost:8080';
 
 
@@ -232,7 +232,7 @@ const RentalMarketplace = () => {
   const [priceRange, setPriceRange] = useState({ min: 0, max: 100 });
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
   const ApiUrl = process.env.NODE_ENV === 'production'
-    ? 'https://KisaanSetu-ai-11j3.onrender.com'
+    ? 'https://agrotech-ai-11j3.onrender.com'
     : 'http://localhost:8080';
 
   useEffect(() => {

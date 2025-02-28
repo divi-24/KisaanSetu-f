@@ -98,7 +98,7 @@ const Contact = () => {
 
     try {
       // Send form data to backend
-      const response = await fetch('https://KisaanSetu-ai-11j3.onrender.com/api/contactus', {
+      const response = await fetch('https://agrotech-ai-11j3.onrender.com/api/contactus', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

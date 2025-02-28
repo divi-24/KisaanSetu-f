@@ -93,7 +93,7 @@ const CategoryPage = () => {
           <Filter items={items} setFilteredItems={setFilteredItems} />
           <img
             className="py-2"
-            src="https://github.com/IkkiOcean/KisaanSetu_Assets/blob/main/shop-asset/category_page/category_banner_1.jpg?raw=true"
+            src="https://github.com/IkkiOcean/AgroTech_Assets/blob/main/shop-asset/category_page/category_banner_1.jpg?raw=true"
             alt=""
           />
         </div>

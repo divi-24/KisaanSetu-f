@@ -25,7 +25,7 @@ const RentCheckoutPage = () => {
   ]);
 
   const ApiUrl = process.env.NODE_ENV === 'production'
-    ? 'https://KisaanSetu-ai-11j3.onrender.com'
+    ? 'https://agrotech-ai-11j3.onrender.com'
     : 'http://localhost:8080';
 
   const [userDetails, setUserDetails] = useState({

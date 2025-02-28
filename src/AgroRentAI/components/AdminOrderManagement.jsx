@@ -9,7 +9,7 @@ const OrderManagement = () => {
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const ApiUrl = process.env.NODE_ENV === 'production'
-    ? 'https://KisaanSetu-ai-11j3.onrender.com'
+    ? 'https://agrotech-ai-11j3.onrender.com'
     : 'http://localhost:8080';
 
   // Fetch all orders from backend API

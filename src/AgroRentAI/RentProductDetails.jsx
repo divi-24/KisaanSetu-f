@@ -10,7 +10,7 @@ const RentProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const ApiUrl = process.env.NODE_ENV === 'production'
-    ? 'https://KisaanSetu-ai-11j3.onrender.com'
+    ? 'https://agrotech-ai-11j3.onrender.com'
     : 'http://localhost:8080';
 
   const { productId } = useParams();

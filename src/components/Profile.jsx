@@ -15,7 +15,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
   const ApiUrl = process.env.NODE_ENV === 'production'
-  ? 'https://KisaanSetu-ai-11j3.onrender.com'
+  ? 'https://agrotech-ai-11j3.onrender.com'
   : 'http://localhost:8080';
 
 

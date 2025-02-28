@@ -73,7 +73,7 @@ const Footer = () => {
         }
 
         try {
-            const response = await fetch("https://KisaanSetu-ai-11j3.onrender.com/api/rating", {
+            const response = await fetch("https://agrotech-ai-11j3.onrender.com/api/rating", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

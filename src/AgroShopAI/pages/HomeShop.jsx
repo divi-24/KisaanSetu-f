@@ -11,7 +11,7 @@ const HomeShop = () => {
       <HeroSectionShop images={slides} />
       <Categories categories={categories} />
       <img
-        src="https://github.com/IkkiOcean/KisaanSetu_Assets/blob/main/shop-asset/home_banner_1.jpg?raw=true"
+        src="https://github.com/IkkiOcean/AgroTech_Assets/blob/main/shop-asset/home_banner_1.jpg?raw=true"
         alt=""
         className="w-full mx-2 my-3" // Add this class to make the image responsive
       />
@@ -20,21 +20,21 @@ const HomeShop = () => {
         <CardContainer items={ongoingSale} text={'Ongoing Sale'} />
         <img
           className=" pl-2 h-fit object-cover flex-grow" // Make the image responsive; takes half width on larger screens
-          src="https://github.com/IkkiOcean/KisaanSetu_Assets/blob/main/shop-asset/autumn_sale.jpg?raw=true"
+          src="https://github.com/IkkiOcean/AgroTech_Assets/blob/main/shop-asset/autumn_sale.jpg?raw=true"
           alt="Autumn Sale"
         />
       </div>
       
       <CardRelay items={todaysOffers} heading="Today's Offer" />
       <img
-        src="https://github.com/IkkiOcean/KisaanSetu_Assets/blob/main/shop-asset/home_banner_2.jpg?raw=true"
+        src="https://github.com/IkkiOcean/AgroTech_Assets/blob/main/shop-asset/home_banner_2.jpg?raw=true"
         alt=""
         className="w-full mx-2 my-3" // Add this class to make the image responsive
       />
         <CardRelay items={topSellingSeeds} heading="Top Seeds" />
         <CardRelay items={topSellingFertilizers} heading="Top Fertilizers" />
       <img
-        src="https://github.com/IkkiOcean/KisaanSetu_Assets/blob/main/shop-asset/home_banner_3.jpg?raw=true"
+        src="https://github.com/IkkiOcean/AgroTech_Assets/blob/main/shop-asset/home_banner_3.jpg?raw=true"
         alt=""
         className="w-full mx-2 my-3" // Add this class to make the image responsive
       />

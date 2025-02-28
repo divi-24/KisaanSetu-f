@@ -12,7 +12,7 @@ const ContributorsPage = () => {
     const fetchData = async () => {
         try {
             const contributorsData = [];
-            const repoUrl = 'https://api.github.com/repos/manikumarreddyu/KisaanSetu-AI';
+            const repoUrl = 'https://api.github.com/repos/manikumarreddyu/AgroTech-AI';
             let page = 1;
             let isFetching = true;
     
