@@ -1,10 +1,10 @@
-
-
 {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
-    ]
-  }
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "https://kisaan-setu-f.vercel.app" }
+      ]
+    }
+  ]
+}
