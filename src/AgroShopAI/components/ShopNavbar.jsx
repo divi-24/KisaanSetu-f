@@ -63,7 +63,7 @@ function ShopNavbar() {
               alt="KisaanSetu Logo"
             />
             <span className="text-2xl font-bold bg-gradient-to-r from-white to-white bg-clip-text text-transparent group-hover:from-lime-200 group-hover:to-white transition-all duration-300">
-              AgroShop
+              KisaanSetu Shop
             </span>
           </Link>
         <div className="text-2xl font-bold flex items-center">

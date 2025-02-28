@@ -15,7 +15,7 @@ const TermsOfUse = () => {
           1. Acceptance of Terms
         </h2>
         <p className="text-gray-700 mb-4">
-          By accessing or using the services provided by AgroShop AI, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you must not use our services. This agreement is made between you, the user, and AgroShop AI, located in India, and is governed by the applicable laws of India.
+          By accessing or using the services provided by KisaanSetuShop AI, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you must not use our services. This agreement is made between you, the user, and KisaanSetuShop AI, located in India, and is governed by the applicable laws of India.
         </p>
       </section>
 
@@ -44,7 +44,7 @@ const TermsOfUse = () => {
         </h2>
         <ul className="list-disc list-inside text-gray-700 mb-4">
           <li>
-            All content, trademarks, and intellectual property related to AgroShop AI are owned by the company or its licensors.
+            All content, trademarks, and intellectual property related to KisaanSetuShop AI are owned by the company or its licensors.
           </li>
           <li>
             Reproduction, distribution, or creation of derivative works from any content without prior written consent is prohibited.
@@ -59,7 +59,7 @@ const TermsOfUse = () => {
         </h2>
         <ul className="list-disc list-inside text-gray-700 mb-4">
           <li>
-            AgroShop AI shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our services.
+            KisaanSetuShop AI shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our services.
           </li>
           <li>
             This includes, but is not limited to, loss of profits, data, or goodwill.
@@ -74,7 +74,7 @@ const TermsOfUse = () => {
         </h2>
         <ul className="list-disc list-inside text-gray-700 mb-4">
           <li>
-            You agree to indemnify and hold harmless AgroShop AI from any claims, damages, losses, liabilities, and expenses arising from your use of the services or violation of these Terms.
+            You agree to indemnify and hold harmless KisaanSetuShop AI from any claims, damages, losses, liabilities, and expenses arising from your use of the services or violation of these Terms.
           </li>
         </ul>
       </section>
@@ -86,7 +86,7 @@ const TermsOfUse = () => {
         </h2>
         <ul className="list-disc list-inside text-gray-700 mb-4">
           <li>
-            AgroShop AI reserves the right to terminate or suspend your account and access to services at any time without notice.
+            KisaanSetuShop AI reserves the right to terminate or suspend your account and access to services at any time without notice.
           </li>
           <li>
             This can occur for conduct that violates these Terms or is harmful to other users, the company, or third parties.
@@ -116,7 +116,7 @@ const TermsOfUse = () => {
         </h2>
         <ul className="list-disc list-inside text-gray-700 mb-4">
           <li>
-            AgroShop AI reserves the right to modify these Terms at any time.
+            KisaanSetuShop AI reserves the right to modify these Terms at any time.
           </li>
           <li>
             Users will be notified of significant changes via the website or email.

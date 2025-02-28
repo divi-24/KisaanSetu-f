@@ -47,7 +47,7 @@ export default function HeroSectionRent() {
       >
         <div className="lg:w-2/3 text-center mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-            Rent or Lease Agricultural Equipment Easily with AgroRent AI
+            Rent or Lease Agricultural Equipment Easily with KisaanSetu AI
           </h1>
           <p className="text-xl sm:text-2xl text-green-100 mb-8">
             Empowering farmers to access modern equipment, anytime, anywhere.

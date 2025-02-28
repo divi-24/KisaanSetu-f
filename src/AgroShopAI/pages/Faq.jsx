@@ -7,12 +7,12 @@ const FAQ = () => {
 
   const faqs = [
     {
-      "question": "What types of products does AgroShop offer?",
-      "answer": "AgroShop offers a wide range of products to meet all agricultural needs, including seeds, fertilizers, pesticides, soil health kits, farming tools, machinery, and crop disease prediction tools."
+      "question": "What types of products does KisaanShop offer?",
+      "answer": "KisaanShop offers a wide range of products to meet all agricultural needs, including seeds, fertilizers, pesticides, soil health kits, farming tools, machinery, and crop disease prediction tools."
     },
     {
       "question": "How can I track my order?",
-      "answer": "Once your order is confirmed, we’ll send a tracking link to your email or SMS. You can also log in to your AgroShop account and go to 'My Orders' to view the current status of your order."
+      "answer": "Once your order is confirmed, we’ll send a tracking link to your email or SMS. You can also log in to your KisaanShop account and go to 'My Orders' to view the current status of your order."
     },
     {
       "question": "Do you offer bulk discounts?",
@@ -24,7 +24,7 @@ const FAQ = () => {
     },
     {
       "question": "Can I get expert advice on which products to buy?",
-      "answer": "Yes! AgroShop provides access to expert recommendations for farmers. Our team can help you select the right products for your specific crops, soil type, and climate."
+      "answer": "Yes! KisaanShop provides access to expert recommendations for farmers. Our team can help you select the right products for your specific crops, soil type, and climate."
     },
     {
       "question": "What payment options are available?",
@@ -32,10 +32,10 @@ const FAQ = () => {
     },
     {
       "question": "Do you deliver to rural areas?",
-      "answer": "Yes, AgroShop is committed to serving farmers across urban and rural areas. We deliver nationwide, ensuring that farmers everywhere have access to quality agricultural products."
+      "answer": "Yes, KisaanShop is committed to serving farmers across urban and rural areas. We deliver nationwide, ensuring that farmers everywhere have access to quality agricultural products."
     },
     {
-      "question": "Are the products on AgroShop certified?",
+      "question": "Are the products on KisaanShop certified?",
       "answer": "Yes, we only offer products from certified suppliers to ensure quality and reliability. Each product listing includes certification details for your reference."
     },
     {
@@ -43,12 +43,12 @@ const FAQ = () => {
       "answer": "You can cancel your order before it is shipped by going to 'My Orders' and selecting the cancel option. Once shipped, cancellation may not be available."
     },
     {
-      "question": "How does AgroShop handle product quality issues?",
+      "question": "How does KisaanShop handle product quality issues?",
       "answer": "If you encounter any quality issues with your purchase, please reach out to our support team. We will assist you with a return or exchange based on the situation."
     },
     {
-      "question": "Does AgroShop offer any loyalty or reward program?",
-      "answer": "Yes, AgroShop has a loyalty program where you earn points on every purchase. These points can be redeemed for discounts on future orders."
+      "question": "Does KisaanShop offer any loyalty or reward program?",
+      "answer": "Yes, KisaanShop has a loyalty program where you earn points on every purchase. These points can be redeemed for discounts on future orders."
     },
     {
       "question": "Can I set up a subscription for recurring products like fertilizers?",

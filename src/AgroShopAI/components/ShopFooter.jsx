@@ -31,7 +31,7 @@ const ShopFooter = () => {
               alt="KisaanSetu Logo"
             />
             <span className="text-2xl font-bold bg-gradient-to-r from-white to-white bg-clip-text text-transparent group-hover:from-lime-200 group-hover:to-white transition-all duration-300">
-              AgroShop
+            KisaanSetu Shop
             </span>
           </Link>
           <p className="text-sm mb-4 pl-2 pt-1">
@@ -48,12 +48,12 @@ const ShopFooter = () => {
         <div className="border-r border-gray-500 pr-3">
           <h2 className="text-lg font-semibold mb-2">Mail Us</h2>
           <p className="text-sm">
-            Agro E-Commerce
+            KisaanSetu E-Commerce
             <br />
             123 Agricultural Lane, <br />
             Farming City, Country XYZ, 12345
             <br />
-            Email: contact@agro-ecommerce.com
+            Email: contact@KisaanSetu-ecommerce.com
           </p>
           {/* Social Media with Icons */}
           <h2 className="text-lg font-semibold mt-4 mb-2">Follow Us</h2>
@@ -95,12 +95,12 @@ const ShopFooter = () => {
           <ul className="text-sm">
             <li>
               <a href="/" className="hover:underline">
-                KisaanSetuAI
+                KisaanSetu AI
               </a>
             </li>
             <li>
               <a href="/AgroRentAI" className="hover:underline">
-                AgroRent
+                KisaanSetu Rent
               </a>
             </li>
           </ul>
@@ -184,7 +184,7 @@ const ShopFooter = () => {
       {/* Copyright */}
       <div className="mt-8 text-center border-t border-gray-400 pt-4">
         <p className="text-sm">
-          &copy; 2024 Agro E-Commerce. All rights reserved.
+          &copy; 2024 KisaanSetu E-Commerce. All rights reserved.
         </p>
       </div>
     </footer>

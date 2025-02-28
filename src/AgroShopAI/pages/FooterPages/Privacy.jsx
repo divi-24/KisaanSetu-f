@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
             1. Introduction
           </h2>
           <p className="text-gray-700 mb-4">
-            At AgroShop AI, we are committed to respecting and protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our e-commerce platform and related services. By accessing or using our services, you agree to the terms of this Privacy Policy. Please review it carefully to understand our practices regarding your information.
+            At KisaanShop AI, we are committed to respecting and protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our e-commerce platform and related services. By accessing or using our services, you agree to the terms of this Privacy Policy. Please review it carefully to understand our practices regarding your information.
           </p>
         </section>
 
@@ -89,7 +89,7 @@ const PrivacyPolicy = () => {
             <li>Opt out of marketing communications at any time.</li>
           </ul>
           <p className="text-gray-700 mb-4">
-            To exercise any of these rights, please contact us at <a href="mailto:support@agroshopai.com" className="text-teal-600">support@agroshopai.com</a>.
+            To exercise any of these rights, please contact us at <a href="mailto:support@KisaanSetushopai.com" className="text-teal-600">support@KisaanSetushopai.com</a>.
           </p>
         </section>
 
@@ -119,7 +119,7 @@ const PrivacyPolicy = () => {
             9. Contact Us
           </h2>
           <p className="text-gray-700 mb-4">
-            If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@agroshopai.com" className="text-teal-600">support@agroshopai.com</a>.
+            If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@KisaanSetushopai.com" className="text-teal-600">support@KisaanSetushopai.com</a>.
           </p>
         </section>
       </div>

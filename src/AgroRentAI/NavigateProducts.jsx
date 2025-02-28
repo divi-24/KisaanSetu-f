@@ -315,7 +315,7 @@ const RentalMarketplace = () => {
      <ToastContainer/>
       <header className="bg-green-600 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-white">AgroRent AI</h1>
+          <h1 className="text-2xl font-bold text-white">KisaanSetu AI</h1>
           <div className="flex items-center space-x-4">
           <div className="relative">
               <input

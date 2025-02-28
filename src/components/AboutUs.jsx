@@ -60,7 +60,7 @@ function AboutUs() {
                 <p className="text-lg text-[#000435] bg-white">
                   <span> ✅  We empower farmers, agribusinesses, and stakeholders across the agricultural ecosystem by providing innovative, data-driven solutions that increase efficiency, reduce waste, and improve yields.</span><br /><br />
                   <span> ✅ We believe that technology should be accessible to all, which is why we collaborate closely with farmers, agronomists, and industry experts to develop practical solutions that cater to the unique needs of the agricultural sector.</span><br /><br />
-                  <span> ✅ Whether it’s a small family farm or a large commercial operation, Agro Tech AI provides scalable, adaptable technology that helps businesses thrive in an ever-changing environment.</span><br /><br />
+                  <span> ✅ Whether it’s a small family farm or a large commercial operation, KisaanSetu Tech AI provides scalable, adaptable technology that helps businesses thrive in an ever-changing environment.</span><br /><br />
                 </p>
               </div>
               <img className="w-full md:w-[500px] mx-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 bg-white" src={aboutus} alt="About Us" />
@@ -72,8 +72,8 @@ function AboutUs() {
             <div className="grid md:grid-cols-2 gap-8 my-5">
               <div className="col-4 md:order-last">
                 <p className="text-lg text-[#000435] bg-white ">
-                  <span>  At Agro Tech AI, our mission is to revolutionize agriculture through advanced artificial intelligence technologies. We are dedicated to creating AI-driven solutions that empower farmers and agribusinesses to optimize productivity, improve sustainability, and tackle the growing challenges of global food security.
-                  By leveraging the power of AI, we aim to create a future where agriculture is not only more efficient but also more resilient to the challenges posed by climate change and global food insecurity. Through collaboration, innovation, and a deep commitment to the farming community, Agro Tech AI is determined to build a more sustainable and prosperous agricultural future for all.</span><br />
+                  <span>  At KisaanSetu Tech AI, our mission is to revolutionize agriculture through advanced artificial intelligence technologies. We are dedicated to creating AI-driven solutions that empower farmers and agribusinesses to optimize productivity, improve sustainability, and tackle the growing challenges of global food security.
+                  By leveraging the power of AI, we aim to create a future where agriculture is not only more efficient but also more resilient to the challenges posed by climate change and global food insecurity. Through collaboration, innovation, and a deep commitment to the farming community, KisaanSetu Tech AI is determined to build a more sustainable and prosperous agricultural future for all.</span><br />
                 </p>
               </div>
               <img className="w-full md:w-[500px] mx-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 bg-white" src={editor} alt="About Us" />

@@ -9,7 +9,7 @@ const CancellationAndReturnPolicy = () => {
         Cancellation & Return Policy
       </h1>
       <p className="text-gray-700 text-center mb-8">
-        At AgroShopAI, we value your satisfaction and strive to ensure a seamless shopping experience. Please review our policies below for detailed guidance on cancellations and returns for various product categories.
+        At KisaanShopAI, we value your satisfaction and strive to ensure a seamless shopping experience. Please review our policies below for detailed guidance on cancellations and returns for various product categories.
       </p>
 
       {/* Cancellation Policy */}
@@ -25,7 +25,7 @@ const CancellationAndReturnPolicy = () => {
 
           <h3 className="text-xl font-medium text-gray-900 mb-3">2. Steps to Cancel Your Order</h3>
           <ul className="list-decimal list-inside text-gray-700 mb-4 space-y-2">
-            <li>Log into your AgroShopAI account.</li>
+            <li>Log into you KisaanShopAI account.</li>
             <li>Navigate to <strong>My Orders</strong> and select the relevant order.</li>
             <li>Click on <strong>Cancel Order</strong> and follow the provided instructions.</li>
             <li>If the order has already been shipped, please reach out to our <a href="/support" className="text-teal-700 underline">Customer Support Team</a> for assistance.</li>
@@ -56,7 +56,7 @@ const CancellationAndReturnPolicy = () => {
 
           <h3 className="text-xl font-medium text-gray-900 mb-3">2. How to Initiate a Return</h3>
           <ul className="list-decimal list-inside text-gray-700 mb-4 space-y-2">
-            <li>Log in to your AgroShopAI account and go to <strong>My Orders</strong>.</li>
+            <li>Log in to your KisaanShopAI account and go to <strong>My Orders</strong>.</li>
             <li>Select the item for return and click on the <strong>Return Item</strong> button.</li>
             <li>Follow the instructions to complete the return request.</li>
           </ul>
