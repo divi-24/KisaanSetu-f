@@ -38,7 +38,7 @@ export default function Component() {
   const handlePredictClick = (e) => {
     e.preventDefault();
     
-    const url = "https://agrotech-api.onrender.com/fertilizer_predict";
+    const url = "https://kisaansetu-api-luyc.onrender.com/fertilizer_predict";
     //  const url = "http://127.0.0.1:5000/fertilizer_predict";
     setIsLoading(true);
     const jsonData = JSON.stringify(formData);

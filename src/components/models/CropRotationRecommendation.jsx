@@ -36,7 +36,7 @@ export default function Component() {
 
   const handlePredictClick = (e) => {
     e.preventDefault()
-    const url = "https://agrotech-api.onrender.com/crop_rotation"
+    const url = "https://kisaansetu-api-luyc.onrender.com/crop_rotation"
     setIsLoading(true)
 
     const numericData = {
