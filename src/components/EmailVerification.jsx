@@ -23,7 +23,7 @@ const AccountVerificationPage = () => {
     }
   }, [token]);
   const ApiUrl = process.env.NODE_ENV === 'production'
-  ? 'https://agro-tech-ai-backend-teal.vercel.app'
+  ? 'https://kisaansetu-b.onrender.com'
   : 'http://localhost:8080';
 
   // Function to handle account verification

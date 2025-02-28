@@ -15,7 +15,7 @@ const LoginPage = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const { isLoggedIn, login } = useAuth();
   const ApiUrl = process.env.NODE_ENV === 'production'
-  ? 'https://agro-tech-ai-backend-teal.vercel.app'
+  ? 'https://kisaansetu-b.onrender.com'
   : 'http://localhost:8080';
 
   const navigate = useNavigate()
