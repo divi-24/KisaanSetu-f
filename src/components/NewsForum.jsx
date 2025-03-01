@@ -5,7 +5,7 @@ export default function NewsForum() {
   const [search, setSearch] = useState("agriculture");
   const [newsData, setNewsData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const API_KEY = "823eff063e324ab1a016abf49b309b75";
+  const API_KEY = "2d0d3a1ccd6745de9741f3b9d14b68c4";
 
   const getData = async () => {
     setLoading(true);
