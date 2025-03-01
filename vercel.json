@@ -6,5 +6,11 @@
         { "key": "Access-Control-Allow-Origin", "value": "https://kisaan-setu-f.vercel.app" }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
