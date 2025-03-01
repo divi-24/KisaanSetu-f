@@ -89,7 +89,7 @@ const CropRecommendationCard = () => {
             image: "https://th.bing.com/th/id/OIP.m5-x6mfyS59kwL_pH2L-ugHaEK?w=1000&h=562&rs=1&pid=ImgDetMain",
             title: "Irrigation System Prediction",
             description: "Determine the most effective irrigation system for your farm.",
-            link: "/irrigation",
+            link: "/water-management",
             details: (
                 <ul>
                     <li>Drip vs. sprinkler irrigation suitability.</li>
