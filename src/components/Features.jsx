@@ -14,19 +14,19 @@ const featureData = [
     icon: <MdLeaderboard size={23} />,
     title: "Comprehensive Models",
     description: "KisaanSetu platform offers various machine learning models for accurate predictions. These models help farmers to make informed decisions about crop management, soil health, and pest control.",
-    gradient: "bg-gradient-to-r from-blue-400 to-blue-600",
+    gradient: "bg-gradient-to-r from-green-400 to-green-600",
   },
   {
     icon: <FaLaptopFile size={23} />,
     title: "User-Friendly Interface",
     description: "Our intuitive interface allows farmers to easily navigate throughout the platform and utilize the AI tools to solve their problems. The platform is designed to be accessible even for users with limited technical knowledge.",
-    gradient: "bg-gradient-to-r from-purple-400 to-purple-600",
+    gradient: "bg-gradient-to-r from-green-400 to-green-600",
   },
   {
     icon: <BiSolidCustomize size={23} />,
     title: "Customizable Solutions",
     description: "KisaanSetu provides customizable solutions tailored to the unique needs of each farm. Farmers can adjust parameters to get the most accurate and relevant predictions by using AI tools for their specific conditions.",
-    gradient: "bg-gradient-to-r from-red-400 to-red-600",
+    gradient: "bg-gradient-to-r from-green-400 to-green-600",
   },
 ];
 
