@@ -31,7 +31,7 @@ export default function ElectricalElectronicsShops() {
     setError('');
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/find_ee_shops", {
+      const response = await axios.post("https://electronic-o41m.onrender.com/find_ee_shops", {
         location: location,
       });
       
