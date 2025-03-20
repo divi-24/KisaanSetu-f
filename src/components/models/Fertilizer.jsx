@@ -104,7 +104,6 @@ export default function Component() {
       <header className="text-center py-8">
         <h1 className="text-4xl font-bold text-green-600 mb-3">Fertilizer Prediction</h1>
         <p className="text-2xl text-green-500">Growing Season: Spring - Summer</p>
-        <img src="/placeholder.svg?height=120&width=120" alt="Wheat" className="mx-auto mt-4 rounded-full" />
       </header>
 
       <div className="container mx-auto px-4">
